@@ -247,6 +247,7 @@ MonoBehaviour:
   shopItems: []
   catalogJson: {fileID: 4900000, guid: e90965f0669692e418013c1504d4c1ef, type: 3}
   ui: {fileID: 245531763}
+  manager: {fileID: 1336749840}
 --- !u!4 &301779020
 Transform:
   m_ObjectHideFlags: 0
@@ -907,7 +908,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 350, y: 100}
@@ -1637,7 +1638,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
