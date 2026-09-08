@@ -1,0 +1,40 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "name": "Crab Dance",
+            "price": 50,
+            "type": "emote"
+        },
+        {
+            "id": 2,
+            "name": "Dab",
+            "price": 20,
+            "type": "emote"
+        },
+        {
+            "id": 3,
+            "name": "Holographic",
+            "price": 75,
+            "type": "skin"
+        },
+        {
+            "id": 4,
+            "name": "Galaxy",
+            "price": 100,
+            "type": "skin"
+        },
+        {
+            "id": 5,
+            "name": "Cowboy Hat",
+            "price": 20,
+            "type": "hat"
+        },
+        {
+            "id": 6,
+            "name": "Top Hat",
+            "price": 50,
+            "type": "hat"
+        }
+    ]
+}
