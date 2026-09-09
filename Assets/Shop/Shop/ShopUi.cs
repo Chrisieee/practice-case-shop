@@ -9,23 +9,32 @@ public class ShopUi : MonoBehaviour
     public ShopManager shopManager;
     public TMP_Text error;
 
-    void Start() {
+    void Start()
+    {
         error.alpha = 0;
     }
 
-    public void FillShopUi(Item[] shopItems) {
-        foreach (var item in shopItems) {
+    public void FillShopUi(Item[] shopItems)
+    {
+        foreach (var item in shopItems)
+        {
             GameObject buttonObject = Instantiate(buttonPrefab, shopContainer);
 
             Button button = buttonObject.GetComponentInChildren<Button>();
 
-            button.GetComponentInChildren<TMP_Text>().text = item.name + " - " + item.price + " gems";
-    
-            button.onClick.AddListener(() => shopManager.PurchaseItem(item));
+            item.strategy = new NormalPurchase(button, item);
+
+            if (item.id == 3)
+            {
+                item.strategy = new SalePurchase(20, button, item);
+            }
+
+            button.onClick.AddListener(() => item.Buy(shopManager));
         }
     }
 
-    public void ShowError(){
+    public void ShowError()
+    {
         error.alpha = 1;
     }
 }
