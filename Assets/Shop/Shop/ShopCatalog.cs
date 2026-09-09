@@ -19,6 +19,16 @@ public class ShopCatalog : MonoBehaviour
 
         shopItems = data.items;
 
+        foreach (var item in shopItems)
+        {
+            item.Initialize(manager);
+
+            if (item.id == 3)
+            {
+                item.ChangeState(new SaleState(item, manager, 20));
+            }
+        }
+
         ui.FillShopUi(shopItems);
     }
 }

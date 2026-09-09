@@ -1,21 +1,17 @@
-using UnityEngine.UI;
-
 public class SoldOutState : IItemState
 {
     private Item item;
     private ShopManager manager;
-    private Button button;
 
-    public SoldOutState(Item item, ShopManager manager, Button button)
+    public SoldOutState(Item item, ShopManager manager)
     {
         this.item = item;
         this.manager = manager;
-        this.button = button;
     }
 
     public void Enter()
     {
-        button.interactable = false;
+        //show that it is soldout
     }
 
     public void Buy()

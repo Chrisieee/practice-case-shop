@@ -22,12 +22,7 @@ public class ShopUi : MonoBehaviour
 
             Button button = buttonObject.GetComponentInChildren<Button>();
 
-            item.Initialize(shopManager, button);
-
-            if (item.id == 3)
-            {
-                item.ChangeState(new SaleState(item, shopManager, 20, button));
-            }
+            button.GetComponentInChildren<TMP_Text>().text = item.name + " - " + item.price + " gems";
 
             button.onClick.AddListener(() => item.Buy());
         }

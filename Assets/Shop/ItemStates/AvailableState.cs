@@ -1,22 +1,17 @@
-using UnityEngine.UI;
-using TMPro;
-
 public class AvailableState : IItemState
 {
     private Item item;
     private ShopManager manager;
-    private Button button;
 
-    public AvailableState(Item item, ShopManager manager, Button button)
+    public AvailableState(Item item, ShopManager manager)
     {
         this.item = item;
         this.manager = manager;
-        this.button = button;
     }
 
     public void Enter()
     {
-        button.GetComponentInChildren<TMP_Text>().text = item.name + " - " + item.price + " gems";
+        //show that is available
     }
 
     public void Buy()
@@ -28,7 +23,7 @@ public class AvailableState : IItemState
         }
 
         manager.PurchaseItem(item, item.price);
-        item.ChangeState(new SoldOutState(item, manager, button));
+        item.ChangeState(new SoldOutState(item, manager));
     }
 
     public void Exit()

@@ -19,9 +19,9 @@ public class Item
 
     public IItemState state;
 
-    public void Initialize(ShopManager shopManager, Button button)
+    public void Initialize(ShopManager shopManager)
     {
-        ChangeState(new AvailableState(this, shopManager, button));
+        ChangeState(new AvailableState(this, shopManager));
     }
 
     public void ChangeState(IItemState newState)
