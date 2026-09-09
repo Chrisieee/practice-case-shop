@@ -1,19 +1,24 @@
+using UnityEngine.UI;
+using TMPro;
+
 public class SaleState : IItemState
 {
     private Item item;
     private ShopManager manager;
+    private Button button;
     private int salesPrice;
 
-    public SaleState(Item item, ShopManager manager, int saleAmount)
+    public SaleState(Item item, ShopManager manager, int saleAmount, Button button)
     {
         this.item = item;
         this.manager = manager;
         salesPrice = item.price * (100 - saleAmount) / 100;
+        this.button = button;
     }
 
     public void Enter()
     {
-        //show that it is on sale
+        button.GetComponentInChildren<TMP_Text>().text = item.name + " - from " + item.price + " to " + salesPrice + " gems";
     }
 
     public void Buy()
@@ -25,7 +30,7 @@ public class SaleState : IItemState
         }
 
         manager.PurchaseItem(item, salesPrice);
-        item.ChangeState(new SoldOutState(item, manager));
+        item.ChangeState(new SoldOutState(item, manager, button));
     }
 
     public void Exit()
