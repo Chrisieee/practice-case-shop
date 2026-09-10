@@ -23,6 +23,7 @@ public class ShopUi : MonoBehaviour
             Button button = buttonObject.GetComponentInChildren<Button>();
 
             item.strategy = new NormalPurchase(button, item);
+            item.ChangeState(new AvailableState(item, button));
 
             if (item.id == 3)
             {

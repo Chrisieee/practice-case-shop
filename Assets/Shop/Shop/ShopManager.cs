@@ -13,10 +13,11 @@ public class ShopManager : MonoBehaviour
         return amount <= player.gemBalance;
     }
 
-    public void PurchaseItem(Item item, int price)
+    public void PurchaseItem(Item item, int price, Button button)
     {
         player.UpdateBalance(-price);
         player.inventory.AddItem(item);
+        item.ChangeState(new SoldOutState(item, button));
     }
 
     public void ShowError(string type)

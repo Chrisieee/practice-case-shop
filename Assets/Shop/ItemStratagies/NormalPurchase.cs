@@ -3,9 +3,11 @@ using TMPro;
 
 public class NormalPurchase : IPurchaseStrategy
 {
+    private Button button;
     public NormalPurchase(Button button, Item item)
     {
-        button.GetComponentInChildren<TMP_Text>().text = item.name + " - " + item.price + " gems";
+        this.button = button;
+        this.button.GetComponentInChildren<TMP_Text>().text = item.name + " - " + item.price + " gems";
     }
     public void Purchase(Item item, ShopManager manager)
     {
@@ -15,6 +17,6 @@ public class NormalPurchase : IPurchaseStrategy
             return;
         }
 
-        manager.PurchaseItem(item, item.price);
+        manager.PurchaseItem(item, item.price, button);
     }
 }
