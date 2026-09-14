@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
@@ -18,6 +17,11 @@ public class ShopManager : MonoBehaviour
         player.UpdateBalance(-price);
         player.inventory.AddItem(item);
         item.ChangeState(new SoldOutState(item, button));
+    }
+
+    public void HideError()
+    {
+        ui.error.alpha = 0;
     }
 
     public void ShowError(string type)

@@ -30,6 +30,11 @@ public class ShopUi : MonoBehaviour
                 item.strategy = new SalePurchase(20, button, item);
             }
 
+            if (item.id == 1)
+            {
+                item.strategy = new FreePurchase(button, item);
+            }
+
             button.onClick.AddListener(() => item.Buy(shopManager));
         }
     }

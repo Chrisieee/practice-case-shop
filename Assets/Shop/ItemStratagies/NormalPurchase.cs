@@ -11,6 +11,8 @@ public class NormalPurchase : IPurchaseStrategy
     }
     public void Purchase(Item item, ShopManager manager)
     {
+        manager.HideError();
+
         if (!manager.CanAfford(item.price))
         {
             manager.ShowError("balance");

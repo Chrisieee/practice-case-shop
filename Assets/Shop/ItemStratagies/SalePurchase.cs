@@ -16,6 +16,7 @@ public class SalePurchase : IPurchaseStrategy
 
     public void Purchase(Item item, ShopManager manager)
     {
+        manager.HideError();
 
         if (!manager.CanAfford(price))
         {
