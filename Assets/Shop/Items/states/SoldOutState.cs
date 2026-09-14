@@ -1,4 +1,5 @@
 using UnityEngine.UI;
+using TMPro;
 
 public class SoldOutState : IItemState
 {
@@ -13,6 +14,7 @@ public class SoldOutState : IItemState
 
     public void Enter()
     {
+        button.GetComponentInChildren<TMP_Text>().text = item.name + " - " + "Not available";
         button.interactable = false;
     }
 

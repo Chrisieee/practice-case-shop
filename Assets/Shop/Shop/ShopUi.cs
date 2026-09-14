@@ -25,12 +25,17 @@ public class ShopUi : MonoBehaviour
             item.strategy = new NormalPurchase(button, item);
             item.ChangeState(new AvailableState(item, button));
 
-            if (item.id == 3)
+            if (item.id == 2)
+            {
+                item.ChangeState(new SoldOutState(item, button));
+            }
+
+            if (item.id == 3 || item.id == 7)
             {
                 item.strategy = new SalePurchase(20, button, item);
             }
 
-            if (item.id == 1)
+            if (item.id == 9)
             {
                 item.strategy = new FreePurchase(button, item);
             }

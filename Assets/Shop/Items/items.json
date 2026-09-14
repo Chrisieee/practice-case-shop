@@ -35,6 +35,24 @@
             "name": "Top Hat",
             "price": 50,
             "type": "hat"
+        },
+        {
+            "id": 7,
+            "name": "Macarena",
+            "price": 50,
+            "type": "emote"
+        },
+        {
+            "id": 8,
+            "name": "Rainbow",
+            "price": 90,
+            "type": "skin"
+        },
+        {
+            "id": 9,
+            "name": "Diadem",
+            "price": 10,
+            "type": "emote"
         }
     ]
 }

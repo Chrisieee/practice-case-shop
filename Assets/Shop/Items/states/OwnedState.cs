@@ -1,12 +1,13 @@
 using UnityEngine.UI;
 using TMPro;
+using System;
 
-public class AvailableState : IItemState
+public class OwnedState : IItemState
 {
     private Item item;
     private Button button;
 
-    public AvailableState(Item item, Button button)
+    public OwnedState(Item item, Button button)
     {
         this.item = item;
         this.button = button;
@@ -14,13 +15,12 @@ public class AvailableState : IItemState
 
     public void Enter()
     {
-        button.GetComponentInChildren<TMP_Text>().text = item.name + " - " + item.price + " gems";
-        button.interactable = true;
+        button.GetComponentInChildren<TMP_Text>().text = item.name + " - " + "Owned";
     }
 
     public bool CanBuy()
     {
-        return true;
+        return false;
     }
 
     public void Exit()

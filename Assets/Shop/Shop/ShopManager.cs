@@ -16,7 +16,7 @@ public class ShopManager : MonoBehaviour
     {
         player.UpdateBalance(-price);
         player.inventory.AddItem(item);
-        item.ChangeState(new SoldOutState(item, button));
+        item.ChangeState(new OwnedState(item, button));
     }
 
     public void HideError()
@@ -34,6 +34,10 @@ public class ShopManager : MonoBehaviour
                 break;
             case "soldout":
                 ui.error.text = "This item is sold out.";
+                ui.error.alpha = 1;
+                break;
+            case "owned":
+                ui.error.text = "You already own this item.";
                 ui.error.alpha = 1;
                 break;
         }

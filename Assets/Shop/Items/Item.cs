@@ -38,7 +38,7 @@ public class Item
         }
         else
         {
-            manager.ShowError("soldout");
+            manager.ShowError("owned");
         }
 
     }
