@@ -24,8 +24,5 @@ public class ShopManager : MonoBehaviour
 
         player.UpdateBalance(-price);
         player.inventory.AddItem(item);
-
-        item.ChangeState(new OwnedState());
-        ui.ChangeButtonText("owned", item);
     }
 }
