@@ -1,14 +1,13 @@
 using System;
+using UnityEngine.UI;
 
 public interface IPurchaseStrategy
 {
-    void Purchase(Item item, ShopManager manager);
+    int GetPrice();
 }
 
 public interface IItemState
 {
-    void Enter();
-    void Exit();
     bool CanBuy();
 }
 
@@ -19,26 +18,25 @@ public class Item
     public string name;
     public int price;
     public string type;
+    public Button button;
 
     public IPurchaseStrategy strategy;
     public IItemState state;
 
     public void ChangeState(IItemState newState)
     {
-        state?.Exit();
         state = newState;
-        state.Enter();
     }
 
     public void Buy(ShopManager manager)
     {
         if (state.CanBuy())
         {
-            strategy.Purchase(this, manager);
+            manager.PurchaseItem(this, strategy.GetPrice());
         }
         else
         {
-            manager.ShowError("owned");
+            manager.ui.ShowError("owned");
         }
 
     }

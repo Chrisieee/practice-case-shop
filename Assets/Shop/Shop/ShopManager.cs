@@ -12,35 +12,20 @@ public class ShopManager : MonoBehaviour
         return amount <= player.gemBalance;
     }
 
-    public void PurchaseItem(Item item, int price, Button button)
+    public void PurchaseItem(Item item, int price)
     {
-        player.UpdateBalance(-price);
-        player.inventory.AddItem(item);
-        item.ChangeState(new OwnedState(item, button));
-    }
+        ui.HideError();
 
-    public void HideError()
-    {
-        ui.error.alpha = 0;
-    }
-
-    public void ShowError(string type)
-    {
-        switch (type)
+        if (!CanAfford(price))
         {
-            case "balance":
-                ui.error.text = "You don't have enough gems.";
-                ui.error.alpha = 1;
-                break;
-            case "soldout":
-                ui.error.text = "This item is sold out.";
-                ui.error.alpha = 1;
-                break;
-            case "owned":
-                ui.error.text = "You already own this item.";
-                ui.error.alpha = 1;
-                break;
+            ui.ShowError("balance");
+            return;
         }
 
+        player.UpdateBalance(-price);
+        player.inventory.AddItem(item);
+
+        item.ChangeState(new OwnedState());
+        ui.ChangeButtonText("owned", item);
     }
 }
