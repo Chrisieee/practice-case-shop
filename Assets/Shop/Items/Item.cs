@@ -1,9 +1,9 @@
-using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public interface IPurchaseStrategy
 {
-    void Purchase(Item item, ShopManager manager);
+    int GetPrice();
 }
 
 [Serializable]
@@ -13,12 +13,13 @@ public class Item
     public string name;
     public int price;
     public string type;
+    public Button button;
 
     public IPurchaseStrategy strategy;
 
     public void Buy(ShopManager manager)
     {
-        strategy.Purchase(this, manager);
+        manager.PurchaseItem(this, strategy.GetPrice());
     }
 }
 
