@@ -13,18 +13,11 @@ public class Item
     public string name;
     public int price;
     public string type;
-    public Button button;
 
     public IPurchaseStrategy strategy;
 
     public void Buy(ShopManager manager)
     {
-        manager.PurchaseItem(this, strategy.GetPrice());
+        manager.PurchaseItem(this);
     }
-}
-
-[Serializable]
-public class ShopCatalogData
-{
-    public Item[] items;
 }

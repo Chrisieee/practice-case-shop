@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
+using System;
 
 public class ShopUi : MonoBehaviour
 {
@@ -8,21 +10,23 @@ public class ShopUi : MonoBehaviour
     public Transform shopContainer;
     public ShopManager shopManager;
     public TMP_Text error;
+    [NonSerialized] public Dictionary<Item, Button> itemToButton = new Dictionary<Item, Button>();
 
     void Start()
     {
-        error.alpha = 0;
+        HideError();
     }
 
-    public void FillShopUi(Item[] shopItems)
+    public void FillShopUi()
     {
-        foreach (var item in shopItems)
+        foreach (var item in shopManager.catalog.shopItems)
         {
             GameObject buttonObject = Instantiate(buttonPrefab, shopContainer);
 
             Button button = buttonObject.GetComponentInChildren<Button>();
 
-            item.button = button;
+            itemToButton.Add(item, button);
+
             item.strategy = new NormalPurchase(item);
             ChangeButtonText("available", item);
 
@@ -68,25 +72,27 @@ public class ShopUi : MonoBehaviour
 
     public void ChangeButtonText(string state, Item item)
     {
+        Button button = itemToButton[item];
+
         switch (state)
         {
             case "available":
-                item.button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - {item.price} gems";
+                button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - {item.price} gems";
                 break;
             case "soldout":
-                item.button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - not available";
+                button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - not available";
                 break;
             case "owned":
-                item.button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - owned";
+                button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - owned";
                 break;
             case "normal":
-                item.button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - {item.price} gems";
+                button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - {item.price} gems";
                 break;
             case "sale":
-                item.button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - from {item.price} to {item.strategy.GetPrice()} gems";
+                button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - from {item.price} to {item.strategy.GetPrice()} gems";
                 break;
             case "free":
-                item.button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - from {item.price} to free";
+                button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - from {item.price} to free";
                 break;
         }
     }
