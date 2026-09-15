@@ -11,9 +11,11 @@ public class Cosmetic
     public int id;
     public string name;
     public int price;
-    public string type;
 
     public IPurchaseStrategy strategy;
+
+    public enum CosmeticType { hat, pet, skin }
+    public CosmeticType cosmeticType;
 
     public void Buy(ShopManager manager)
     {

@@ -23,7 +23,7 @@ public class InventoryUi : MonoBehaviour
         foreach (var item in inventoryItems)
         {
             GameObject itemObject = Instantiate(itemPrefab, inventoryContainer);
-            itemObject.GetComponentInChildren<TMP_Text>().text = item.name + " - " + item.type;
+            itemObject.GetComponentInChildren<TMP_Text>().text = item.name + " - " + item.cosmeticType;
         }
     }
 

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class Player : MonoBehaviour
@@ -8,22 +7,26 @@ public class Player : MonoBehaviour
     public Inventory inventory;
     public TMP_Text label;
 
-    void Start() {
+    void Start()
+    {
         label.text = gemBalance + " gems";
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Equals)) {
+        if (Input.GetKeyDown(KeyCode.Equals))
+        {
             UpdateBalance(50);
         }
     }
 
-    public bool CheckBalance(int amount) {
+    public bool CheckBalance(int amount)
+    {
         return amount <= gemBalance;
     }
 
-    public void UpdateBalance(int amount) {
+    public void UpdateBalance(int amount)
+    {
         gemBalance += amount;
         label.text = gemBalance + " gems";
     }
