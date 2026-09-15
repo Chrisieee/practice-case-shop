@@ -1,5 +1,4 @@
 using System;
-using UnityEngine.UI;
 
 public interface IPurchaseStrategy
 {
@@ -7,7 +6,7 @@ public interface IPurchaseStrategy
 }
 
 [Serializable]
-public class Item
+public class Cosmetic
 {
     public int id;
     public string name;

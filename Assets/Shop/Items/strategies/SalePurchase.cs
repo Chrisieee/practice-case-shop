@@ -4,9 +4,9 @@ public class SalePurchase : IPurchaseStrategy
 {
     public int price;
 
-    public SalePurchase(int saleAmount, Item item)
+    public SalePurchase(int saleAmount, Cosmetic cosmetic)
     {
-        price = Mathf.RoundToInt(item.price * (100 - saleAmount) / 100);
+        price = Mathf.RoundToInt(cosmetic.price * (100 - saleAmount) / 100);
     }
 
     public int GetPrice()

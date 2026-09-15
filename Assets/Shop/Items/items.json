@@ -2,15 +2,15 @@
     "items": [
         {
             "id": 1,
-            "name": "Crab Dance",
-            "price": 50,
-            "type": "emote"
+            "name": "Dragon",
+            "price": 75,
+            "type": "pet"
         },
         {
             "id": 2,
-            "name": "Dab",
-            "price": 20,
-            "type": "emote"
+            "name": "Cat",
+            "price": 30,
+            "type": "pet"
         },
         {
             "id": 3,
@@ -38,9 +38,9 @@
         },
         {
             "id": 7,
-            "name": "Macarena",
+            "name": "frog",
             "price": 50,
-            "type": "emote"
+            "type": "pet"
         },
         {
             "id": 8,

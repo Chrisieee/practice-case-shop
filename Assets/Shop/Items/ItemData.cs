@@ -4,17 +4,17 @@ using UnityEngine.UI;
 [Serializable]
 public class ShopCatalogData
 {
-    public Item[] items;
+    public Cosmetic[] items;
 }
 
 public class ShopUiData
 {
-    public Item item;
+    public Cosmetic cosmetic;
     public Button button;
 
-    public ShopUiData(Item item, Button button)
+    public ShopUiData(Cosmetic cosmetic, Button button)
     {
-        this.item = item;
+        this.cosmetic = cosmetic;
         this.button = button;
     }
 }

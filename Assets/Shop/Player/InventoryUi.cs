@@ -10,21 +10,25 @@ public class InventoryUi : MonoBehaviour
     private CanvasGroup canvas;
     private bool isOpened = true;
 
-    void Start() {
+    void Start()
+    {
         canvas = GetComponent<CanvasGroup>();
         Open();
     }
 
-    public void FillInventoryUi(List<Item> inventoryItems) {
+    public void FillInventoryUi(List<Cosmetic> inventoryItems)
+    {
         foreach (Transform child in inventoryContainer) { Destroy(child.gameObject); }
 
-        foreach (var item in inventoryItems) {
+        foreach (var item in inventoryItems)
+        {
             GameObject itemObject = Instantiate(itemPrefab, inventoryContainer);
             itemObject.GetComponentInChildren<TMP_Text>().text = item.name + " - " + item.type;
         }
     }
 
-    public void Open() {
+    public void Open()
+    {
         isOpened = !isOpened;
 
         canvas.alpha = isOpened ? 1 : 0;

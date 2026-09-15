@@ -3,18 +3,20 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour
 {
-    public List<Item> inventoryItems = new List<Item>();
+    public List<Cosmetic> inventoryCosmetics = new List<Cosmetic>();
     public InventoryUi ui;
 
-    public void AddItem(Item item) {
-        inventoryItems.Add(item);
+    public void AddItem(Cosmetic cosmetic)
+    {
+        inventoryCosmetics.Add(cosmetic);
         print("item added");
-        ui.FillInventoryUi(inventoryItems);
+        ui.FillInventoryUi(inventoryCosmetics);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab)) {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
             ui.Open();
         }
     }

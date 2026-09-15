@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class ShopCatalog : MonoBehaviour
 {
-    public Item[] shopItems;
+    public Cosmetic[] shopCosmetics;
     public TextAsset catalogJson;
     public ShopUi ui;
 
@@ -16,7 +16,7 @@ public class ShopCatalog : MonoBehaviour
     {
         ShopCatalogData data = JsonUtility.FromJson<ShopCatalogData>(catalogJson.text); //reads JSON data
 
-        shopItems = data.items;
+        shopCosmetics = data.items;
 
         ui.FillShopUi();
     }

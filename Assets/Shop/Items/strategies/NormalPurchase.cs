@@ -2,9 +2,9 @@ public class NormalPurchase : IPurchaseStrategy
 {
     private int price;
 
-    public NormalPurchase(Item item)
+    public NormalPurchase(Cosmetic cosmetic)
     {
-        price = item.price;
+        price = cosmetic.price;
     }
 
     public int GetPrice()

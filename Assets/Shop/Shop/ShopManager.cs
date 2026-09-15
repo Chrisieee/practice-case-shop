@@ -12,17 +12,17 @@ public class ShopManager : MonoBehaviour
         return amount <= player.gemBalance;
     }
 
-    public void PurchaseItem(Item item)
+    public void PurchaseItem(Cosmetic cosmetic)
     {
         ui.HideError();
 
-        if (!CanAfford(item.strategy.GetPrice()))
+        if (!CanAfford(cosmetic.strategy.GetPrice()))
         {
             ui.ShowError("balance");
             return;
         }
 
-        player.UpdateBalance(-item.strategy.GetPrice());
-        player.inventory.AddItem(item);
+        player.UpdateBalance(-cosmetic.strategy.GetPrice());
+        player.inventory.AddItem(cosmetic);
     }
 }

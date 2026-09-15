@@ -10,7 +10,7 @@ public class ShopUi : MonoBehaviour
     public Transform shopContainer;
     public ShopManager shopManager;
     public TMP_Text error;
-    [NonSerialized] public Dictionary<Item, Button> itemToButton = new Dictionary<Item, Button>();
+    [NonSerialized] public Dictionary<Cosmetic, Button> itemToButton = new Dictionary<Cosmetic, Button>();
 
     void Start()
     {
@@ -19,30 +19,30 @@ public class ShopUi : MonoBehaviour
 
     public void FillShopUi()
     {
-        foreach (var item in shopManager.catalog.shopItems)
+        foreach (var cosmetic in shopManager.catalog.shopCosmetics)
         {
             GameObject buttonObject = Instantiate(buttonPrefab, shopContainer);
 
             Button button = buttonObject.GetComponentInChildren<Button>();
 
-            itemToButton.Add(item, button);
+            itemToButton.Add(cosmetic, button);
 
-            item.strategy = new NormalPurchase(item);
-            ChangeButtonText("available", item);
+            cosmetic.strategy = new NormalPurchase(cosmetic);
+            ChangeButtonText("available", cosmetic);
 
-            if (item.id == 3 || item.id == 7)
+            if (cosmetic.id == 3 || cosmetic.id == 7)
             {
-                item.strategy = new SalePurchase(20, item);
-                ChangeButtonText("sale", item);
+                cosmetic.strategy = new SalePurchase(20, cosmetic);
+                ChangeButtonText("sale", cosmetic);
             }
 
-            if (item.id == 9)
+            if (cosmetic.id == 9)
             {
-                item.strategy = new FreePurchase();
-                ChangeButtonText("free", item);
+                cosmetic.strategy = new FreePurchase();
+                ChangeButtonText("free", cosmetic);
             }
 
-            button.onClick.AddListener(() => item.Buy(shopManager));
+            button.onClick.AddListener(() => cosmetic.Buy(shopManager));
         }
     }
 
@@ -70,29 +70,29 @@ public class ShopUi : MonoBehaviour
         error.alpha = 0;
     }
 
-    public void ChangeButtonText(string state, Item item)
+    public void ChangeButtonText(string state, Cosmetic cosmetic)
     {
-        Button button = itemToButton[item];
+        Button button = itemToButton[cosmetic];
 
         switch (state)
         {
             case "available":
-                button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - {item.price} gems";
+                button.GetComponentInChildren<TMP_Text>().text = $"{cosmetic.name} - {cosmetic.price} gems";
                 break;
             case "soldout":
-                button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - not available";
+                button.GetComponentInChildren<TMP_Text>().text = $"{cosmetic.name} - not available";
                 break;
             case "owned":
-                button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - owned";
+                button.GetComponentInChildren<TMP_Text>().text = $"{cosmetic.name} - owned";
                 break;
             case "normal":
-                button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - {item.price} gems";
+                button.GetComponentInChildren<TMP_Text>().text = $"{cosmetic.name} - {cosmetic.price} gems";
                 break;
             case "sale":
-                button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - from {item.price} to {item.strategy.GetPrice()} gems";
+                button.GetComponentInChildren<TMP_Text>().text = $"{cosmetic.name} - from {cosmetic.price} to {cosmetic.strategy.GetPrice()} gems";
                 break;
             case "free":
-                button.GetComponentInChildren<TMP_Text>().text = $"{item.name} - from {item.price} to free";
+                button.GetComponentInChildren<TMP_Text>().text = $"{cosmetic.name} - from {cosmetic.price} to free";
                 break;
         }
     }
