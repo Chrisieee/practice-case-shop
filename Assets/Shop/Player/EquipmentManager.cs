@@ -16,16 +16,14 @@ public class EquipmentManager : MonoBehaviour
             case Cosmetic.CosmeticType.pet:
                 player.pet = null;
                 player.pet = (Pet)cosmetic;
-                Debug.Log(player.pet);
                 break;
             case Cosmetic.CosmeticType.skin:
                 player.skin = null;
                 player.skin = (Skin)cosmetic;
-                Debug.Log(player.skin);
                 break;
         }
 
-        ui.UpdateEquipment(cosmetic);
+        ui.UpdateEquipment(player);
     }
 
     void Update()

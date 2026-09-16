@@ -3,20 +3,12 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 
-public class InventoryUi : MonoBehaviour
+public class InventoryUi : Ui
 {
     public GameObject itemPrefab;
     public Transform inventoryContainer;
-    private CanvasGroup canvas;
-    private bool isOpened = true;
 
     public EquipmentManager equipmentManager;
-
-    void Start()
-    {
-        canvas = GetComponent<CanvasGroup>();
-        Open();
-    }
 
     public void FillInventoryUi(List<Cosmetic> inventoryItems)
     {
@@ -30,14 +22,5 @@ public class InventoryUi : MonoBehaviour
             button.GetComponentInChildren<TMP_Text>().text = cosmetic.name + " - " + cosmetic.cosmeticType;
             button.onClick.AddListener(() => equipmentManager.EquipCosmetic(cosmetic));
         }
-    }
-
-    public void Open()
-    {
-        isOpened = !isOpened;
-
-        canvas.alpha = isOpened ? 1 : 0;
-        canvas.interactable = isOpened;
-        canvas.blocksRaycasts = isOpened;
     }
 }
