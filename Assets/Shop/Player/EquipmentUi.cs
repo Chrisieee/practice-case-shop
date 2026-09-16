@@ -8,8 +8,8 @@ public class EquipmentUi : Ui
 
     public void UpdateEquipment(Player player)
     {
-        hatLabel.text = player.hat?.name;
-        skinLabel.text = player.skin?.name;
-        petLabel.text = player.pet?.name;
+        hatLabel.text = player.hat?.name ?? "none";
+        skinLabel.text = player.skin?.name ?? "none";
+        petLabel.text = player.pet?.name ?? "none";
     }
 }

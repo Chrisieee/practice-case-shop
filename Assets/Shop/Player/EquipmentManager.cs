@@ -4,6 +4,7 @@ public class EquipmentManager : MonoBehaviour
 {
     public Player player;
     public EquipmentUi ui;
+    public InventoryUi invUi;
 
     public void EquipCosmetic(Cosmetic cosmetic)
     {
@@ -24,6 +25,7 @@ public class EquipmentManager : MonoBehaviour
         }
 
         ui.UpdateEquipment(player);
+        // invUi.ChangeButtonText(cosmetic);
     }
 
     void Update()

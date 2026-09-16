@@ -831,6 +831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentManager
   player: {fileID: 919186659}
   ui: {fileID: 1019319244}
+  invUi: {fileID: 0}
 --- !u!4 &578011971
 Transform:
   m_ObjectHideFlags: 0
@@ -1296,8 +1297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentUi
   hatLabel: {fileID: 2115264259}
-  skinLabel: {fileID: 1834271476}
-  petLabel: {fileID: 1455970392}
+  skinLabel: {fileID: 1455970392}
+  petLabel: {fileID: 1834271476}
 --- !u!225 &1019319245
 CanvasGroup:
   m_ObjectHideFlags: 0
