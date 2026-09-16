@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
     public Inventory inventory;
     public TMP_Text label;
 
+    public Hat hat { get; set; }
+    public Skin skin { get; set; }
+    public Pet pet { get; set; }
+
     void Start()
     {
         label.text = gemBalance + " gems";
