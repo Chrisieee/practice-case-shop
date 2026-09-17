@@ -25,7 +25,6 @@ public class EquipmentManager : MonoBehaviour
         }
 
         ui.UpdateEquipment(player);
-        // invUi.ChangeButtonText(cosmetic);
     }
 
     void Update()
