@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class ShopCatalog : MonoBehaviour {
     private List<Cosmetic> shopCosmetics;
-    private TextAsset catalogJson;
+    [SerializeField] private TextAsset catalogJson;
     [SerializeField] private ShopUi ui;
 
     void Awake() {

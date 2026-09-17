@@ -518,7 +518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8355dbdd14cc56b47a091e45e4f24d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopCatalog
-  shopCosmetics: []
   catalogJson: {fileID: 4900000, guid: e90965f0669692e418013c1504d4c1ef, type: 3}
   ui: {fileID: 245531763}
 --- !u!4 &301779020
@@ -831,7 +830,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentManager
   player: {fileID: 919186659}
   ui: {fileID: 1019319244}
-  invUi: {fileID: 0}
 --- !u!4 &578011971
 Transform:
   m_ObjectHideFlags: 0
@@ -891,7 +889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6867fda878a494b8eb3e882b65f2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  inventoryCosmetics: []
   ui: {fileID: 1040231129}
 --- !u!1 &691896231
 GameObject:
@@ -1155,7 +1152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc139724e7007c34b8c3a1d668a47d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  gemBalance: 100
   inventory: {fileID: 636654861}
   label: {fileID: 1102590149}
 --- !u!4 &919186660
