@@ -14,7 +14,7 @@ public class Cosmetic
 
     public IPurchaseStrategy strategy;
 
-    public enum CosmeticType { hat, pet, skin }
+    public enum CosmeticType { hat, pet, skin, chest }
     public CosmeticType cosmeticType;
 
     public void Buy(ShopManager manager)

@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class SalePurchase : IPurchaseStrategy
-{
-    public int price;
+public class SalePurchase : IPurchaseStrategy {
+    private int price;
 
-    public SalePurchase(int saleAmount, Cosmetic cosmetic)
-    {
+    public SalePurchase(int saleAmount, Cosmetic cosmetic) {
         price = Mathf.RoundToInt(cosmetic.price * (100 - saleAmount) / 100);
     }
 
-    public int GetPrice()
-    {
+    public int GetPrice() {
         return price;
     }
 }

@@ -1,14 +1,11 @@
-public class NormalPurchase : IPurchaseStrategy
-{
+public class NormalPurchase : IPurchaseStrategy {
     private int price;
 
-    public NormalPurchase(Cosmetic cosmetic)
-    {
+    public NormalPurchase(Cosmetic cosmetic) {
         price = cosmetic.price;
     }
 
-    public int GetPrice()
-    {
+    public int GetPrice() {
         return price;
     }
 }

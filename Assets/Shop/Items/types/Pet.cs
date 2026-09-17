@@ -1,7 +1,5 @@
-public class Pet : Cosmetic
-{
-    public Pet()
-    {
+public class Pet : Cosmetic {
+    public Pet() {
         cosmeticType = CosmeticType.pet;
     }
 }

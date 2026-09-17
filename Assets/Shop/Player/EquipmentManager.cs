@@ -1,15 +1,11 @@
 using UnityEngine;
 
-public class EquipmentManager : MonoBehaviour
-{
-    public Player player;
-    public EquipmentUi ui;
-    public InventoryUi invUi;
+public class EquipmentManager : MonoBehaviour {
+    [SerializeField] private Player player;
+    [SerializeField] private EquipmentUi ui;
 
-    public void EquipCosmetic(Cosmetic cosmetic)
-    {
-        switch (cosmetic.cosmeticType)
-        {
+    public void EquipCosmetic(Cosmetic cosmetic) {
+        switch (cosmetic.cosmeticType) {
             case Cosmetic.CosmeticType.hat:
                 player.hat = null;
                 player.hat = (Hat)cosmetic;
@@ -27,10 +23,8 @@ public class EquipmentManager : MonoBehaviour
         ui.UpdateEquipment(player);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Tab)) {
             ui.Open();
         }
     }

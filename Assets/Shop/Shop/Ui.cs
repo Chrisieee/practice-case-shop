@@ -1,18 +1,15 @@
 using UnityEngine;
 
-public class Ui : MonoBehaviour
-{
+public class Ui : MonoBehaviour {
     private CanvasGroup canvas;
     private bool isOpened = true;
 
-    void Start()
-    {
+    void Start() {
         canvas = GetComponent<CanvasGroup>();
         Open();
     }
 
-    public void Open()
-    {
+    public void Open() {
         isOpened = !isOpened;
 
         canvas.alpha = isOpened ? 1 : 0;

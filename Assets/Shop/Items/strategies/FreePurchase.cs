@@ -1,9 +1,7 @@
-public class FreePurchase : IPurchaseStrategy
-{
-    public int price = 0;
+public class FreePurchase : IPurchaseStrategy {
+    private int price = 0;
 
-    public int GetPrice()
-    {
+    public int GetPrice() {
         return price;
     }
 }

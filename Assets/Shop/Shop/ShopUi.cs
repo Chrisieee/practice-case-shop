@@ -4,40 +4,33 @@ using TMPro;
 using System.Collections.Generic;
 using System;
 
-public class ShopUi : MonoBehaviour
-{
+public class ShopUi : MonoBehaviour {
     public GameObject buttonPrefab;
     public Transform shopContainer;
     public ShopManager shopManager;
     public TMP_Text error;
     [NonSerialized] public Dictionary<Cosmetic, Button> itemToButton = new Dictionary<Cosmetic, Button>();
 
-    void Start()
-    {
+    void Start() {
         HideError();
     }
 
-    public void FillShopUi()
-    {
-        foreach (var cosmetic in shopManager.catalog.shopCosmetics)
-        {
-            GameObject buttonObject = Instantiate(buttonPrefab, shopContainer);
-
-            Button button = buttonObject.GetComponentInChildren<Button>();
+    public void FillShopUi(List<Cosmetic> shopCosmetics) {
+        foreach (var cosmetic in shopCosmetics) {
+            var buttonObject = Instantiate(buttonPrefab, shopContainer);
+            var button = buttonObject.GetComponentInChildren<Button>();
 
             itemToButton.Add(cosmetic, button);
 
             cosmetic.strategy = new NormalPurchase(cosmetic);
             ChangeButtonText("available", cosmetic);
 
-            if (cosmetic.id == 3 || cosmetic.id == 7)
-            {
+            if (cosmetic.id == 3 || cosmetic.id == 7) {
                 cosmetic.strategy = new SalePurchase(20, cosmetic);
                 ChangeButtonText("sale", cosmetic);
             }
 
-            if (cosmetic.id == 9)
-            {
+            if (cosmetic.id == 9) {
                 cosmetic.strategy = new FreePurchase();
                 ChangeButtonText("free", cosmetic);
             }
@@ -46,10 +39,8 @@ public class ShopUi : MonoBehaviour
         }
     }
 
-    public void ShowError(string type)
-    {
-        switch (type)
-        {
+    public void ShowError(string type) {
+        switch (type) {
             case "balance":
                 error.text = "You don't have enough gems.";
                 error.alpha = 1;
@@ -65,17 +56,14 @@ public class ShopUi : MonoBehaviour
         }
     }
 
-    public void HideError()
-    {
+    public void HideError() {
         error.alpha = 0;
     }
 
-    public void ChangeButtonText(string state, Cosmetic cosmetic)
-    {
-        Button button = itemToButton[cosmetic];
+    public void ChangeButtonText(string state, Cosmetic cosmetic) {
+        var button = itemToButton[cosmetic];
 
-        switch (state)
-        {
+        switch (state) {
             case "available":
                 button.GetComponentInChildren<TMP_Text>().text = $"{cosmetic.name} - {cosmetic.price} gems";
                 break;

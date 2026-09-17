@@ -1,29 +1,24 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ShopCatalog : MonoBehaviour
-{
-    public List<Cosmetic> shopCosmetics;
-    public TextAsset catalogJson;
-    public ShopUi ui;
+public class ShopCatalog : MonoBehaviour {
+    private List<Cosmetic> shopCosmetics;
+    private TextAsset catalogJson;
+    [SerializeField] private ShopUi ui;
 
-    void Awake()
-    {
+    void Awake() {
         GetCatalogItems();
     }
 
-    public void GetCatalogItems()
-    {
+    public void GetCatalogItems() {
         ShopCatalogData data = JsonUtility.FromJson<ShopCatalogData>(catalogJson.text);
 
         shopCosmetics = new List<Cosmetic>();
 
-        foreach (CosmeticData item in data.items)
-        {
+        foreach (CosmeticData item in data.items) {
             Cosmetic cosmetic;
 
-            switch (item.type)
-            {
+            switch (item.type) {
                 case "hat":
                     cosmetic = new Hat();
                     break;
@@ -36,7 +31,6 @@ public class ShopCatalog : MonoBehaviour
                 default:
                     continue;
             }
-            ;
 
             cosmetic.id = item.id;
             cosmetic.name = item.name;
@@ -45,6 +39,6 @@ public class ShopCatalog : MonoBehaviour
             shopCosmetics.Add(cosmetic);
         }
 
-        ui.FillShopUi();
+        ui.FillShopUi(shopCosmetics);
     }
 }
