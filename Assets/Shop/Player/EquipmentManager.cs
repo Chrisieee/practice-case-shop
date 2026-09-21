@@ -5,20 +5,7 @@ public class EquipmentManager : MonoBehaviour {
     [SerializeField] private EquipmentUi ui;
 
     public void EquipCosmetic(Cosmetic cosmetic) {
-        switch (cosmetic.cosmeticType) {
-            case Cosmetic.CosmeticType.hat:
-                player.hat = null;
-                player.hat = (Hat)cosmetic;
-                break;
-            case Cosmetic.CosmeticType.pet:
-                player.pet = null;
-                player.pet = (Pet)cosmetic;
-                break;
-            case Cosmetic.CosmeticType.skin:
-                player.skin = null;
-                player.skin = (Skin)cosmetic;
-                break;
-        }
+        cosmetic.Equip(cosmetic, player);
 
         ui.UpdateEquipment(player);
     }

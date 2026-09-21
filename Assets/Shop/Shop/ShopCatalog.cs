@@ -16,21 +16,8 @@ public class ShopCatalog : MonoBehaviour {
         shopCosmetics = new List<Cosmetic>();
 
         foreach (CosmeticData item in data.items) {
-            Cosmetic cosmetic;
-
-            switch (item.type) {
-                case "hat":
-                    cosmetic = new Hat();
-                    break;
-                case "pet":
-                    cosmetic = new Pet();
-                    break;
-                case "skin":
-                    cosmetic = new Skin();
-                    break;
-                default:
-                    continue;
-            }
+            var factory = new CosmeticFactory();
+            var cosmetic = factory.CreateCosmetic(item.type);
 
             cosmetic.id = item.id;
             cosmetic.name = item.name;
