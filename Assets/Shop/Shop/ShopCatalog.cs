@@ -14,14 +14,10 @@ public class ShopCatalog : MonoBehaviour {
         ShopCatalogData data = JsonUtility.FromJson<ShopCatalogData>(catalogJson.text);
 
         shopCosmetics = new List<Cosmetic>();
+        var factory = new CosmeticFactory();
 
         foreach (CosmeticData item in data.items) {
-            var factory = new CosmeticFactory();
-            var cosmetic = factory.CreateCosmetic(item.type);
-
-            cosmetic.id = item.id;
-            cosmetic.name = item.name;
-            cosmetic.price = item.price;
+            var cosmetic = factory.CreateCosmetic(item);
 
             shopCosmetics.Add(cosmetic);
         }

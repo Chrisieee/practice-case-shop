@@ -1,14 +1,29 @@
+using System;
+
 public class CosmeticFactory {
-    public Cosmetic CreateCosmetic(string type) {
-        switch (type) {
+    public Cosmetic CreateCosmetic(CosmeticData item) {
+        Cosmetic cosmetic;
+
+        switch (item.type) {
             case "hat":
-                return new Hat();
+                cosmetic = new Hat();
+                break;
             case "pet":
-                return new Pet();
+                cosmetic = new Pet();
+                break;
             case "skin":
-                return new Skin();
+                cosmetic = new Skin();
+                break;
             default:
-                return null;
+                throw new ArgumentException(
+                    $"Unknown cosmetic type: {item.type}"
+                );
         }
+
+        cosmetic.id = item.id;
+        cosmetic.name = item.name;
+        cosmetic.price = item.price;
+
+        return cosmetic;
     }
 }
