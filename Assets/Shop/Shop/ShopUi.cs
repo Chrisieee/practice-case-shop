@@ -25,8 +25,13 @@ public class ShopUi : MonoBehaviour {
             cosmetic.strategy = new NormalPurchase(cosmetic);
             ChangeButtonText("available", cosmetic);
 
-            if (cosmetic.id == 3 || cosmetic.id == 7) {
-                cosmetic.strategy = new SalePurchase(20, cosmetic);
+            if (cosmetic.id == 3) {
+                cosmetic.strategy = new PercentageSale(20, cosmetic);
+                ChangeButtonText("sale", cosmetic);
+            }
+
+            if (cosmetic.id == 7) {
+                cosmetic.strategy = new AmountSale(10, cosmetic);
                 ChangeButtonText("sale", cosmetic);
             }
 

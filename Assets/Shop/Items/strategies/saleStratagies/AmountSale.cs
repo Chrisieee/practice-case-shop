@@ -1,0 +1,7 @@
+using UnityEngine;
+
+public class AmountSale : SalePurchase {
+    public AmountSale(int saleAmount, Cosmetic cosmetic) {
+        price = Mathf.RoundToInt(cosmetic.price - saleAmount);
+    }
+}
