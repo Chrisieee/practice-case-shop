@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class ShopCatalog : MonoBehaviour {
-    private List<Cosmetic> shopCosmetics;
+    private List<Cosmetic> shopCosmetics = new List<Cosmetic>();
     [SerializeField] private TextAsset catalogJson;
     [SerializeField] private ShopUi ui;
 
@@ -11,9 +11,8 @@ public class ShopCatalog : MonoBehaviour {
     }
 
     public void GetCatalogItems() {
-        ShopCatalogData data = JsonUtility.FromJson<ShopCatalogData>(catalogJson.text);
+        var data = JsonUtility.FromJson<ShopCatalogData>(catalogJson.text);
 
-        shopCosmetics = new List<Cosmetic>();
         var factory = new CosmeticFactory();
 
         foreach (CosmeticData item in data.items) {

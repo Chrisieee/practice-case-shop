@@ -15,9 +15,7 @@ public class CosmeticFactory {
                 cosmetic = new Skin();
                 break;
             default:
-                throw new ArgumentException(
-                    $"Unknown cosmetic type: {item.type}"
-                );
+                throw new ArgumentException($"Unknown cosmetic type: {item.type}");
         }
 
         cosmetic.id = item.id;
