@@ -17,7 +17,13 @@ public class ShopManager : MonoBehaviour {
             return;
         }
 
+        if (catalog.CheckState(cosmetic) == "owned") {
+            ui.ShowError("owned");
+            return;
+        }
+
         player.UpdateBalance(-cosmetic.strategy.GetPrice());
         player.inventory.AddItem(cosmetic);
+        catalog.ChangeState("owned", cosmetic, ui);
     }
 }

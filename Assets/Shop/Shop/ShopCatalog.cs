@@ -6,6 +6,8 @@ public class ShopCatalog : MonoBehaviour {
     [SerializeField] private TextAsset catalogJson;
     [SerializeField] private ShopUi ui;
 
+    private Dictionary<Cosmetic, string> cosmeticState = new Dictionary<Cosmetic, string>();
+
     void Awake() {
         GetCatalogItems();
     }
@@ -19,8 +21,18 @@ public class ShopCatalog : MonoBehaviour {
             var cosmetic = factory.CreateCosmetic(item);
 
             shopCosmetics.Add(cosmetic);
+            cosmeticState.Add(cosmetic, "available");
         }
 
         ui.FillShopUi(shopCosmetics);
+    }
+
+    public string CheckState(Cosmetic item) {
+        return cosmeticState[item];
+    }
+
+    public void ChangeState(string state, Cosmetic item, ShopUi ui) {
+        cosmeticState[item] = state;
+        ui.ChangeButtonText(state, item);
     }
 }
