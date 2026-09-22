@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System;
 
 public class ShopUi : MonoBehaviour {
-    public GameObject buttonPrefab;
-    public Transform shopContainer;
-    public ShopManager shopManager;
+    [SerializeField] private GameObject buttonPrefab;
+    [SerializeField] private Transform shopContainer;
+    [SerializeField] private ShopManager shopManager;
     public TMP_Text error;
-    [NonSerialized] public Dictionary<Cosmetic, Button> itemToButton = new Dictionary<Cosmetic, Button>();
+    private Dictionary<Cosmetic, Button> itemToButton = new Dictionary<Cosmetic, Button>();
 
     void Start() {
         HideError();
