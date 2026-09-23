@@ -112,3 +112,5 @@ InitTestScene*.unity*
 .vscode/extensions.json
 .vscode/launch.json
 .vscode/settings.json
+
+Assets/Plugins/Zenject/

@@ -1,5 +1,5 @@
-using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class Player {
     public Inventory inventory;
@@ -7,7 +7,7 @@ public class Player {
     public UnityEvent<Cosmetic, Cosmetic> OnCosmeticChanged { get; private set; } = new();
     public UnityEvent<int> OnBalanceChanged { get; private set; } = new();
 
-    private int gemBalance = 100;
+    private int gemBalance = 200;
     public int GemBalance {
         get => gemBalance;
         set {
@@ -44,14 +44,9 @@ public class Player {
         }
     }
 
-    public void Initialize(Inventory inventory) {
+    [Inject]
+    public void Construct(Inventory inventory) {
         this.inventory = inventory;
-    }
-
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Equals)) {
-            UpdateBalance(50);
-        }
     }
 
     public bool CheckBalance(int amount) {

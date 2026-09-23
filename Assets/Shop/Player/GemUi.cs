@@ -1,11 +1,13 @@
 using UnityEngine;
 using TMPro;
+using Zenject;
 
 public class GemUi : MonoBehaviour {
     private Player player;
     [SerializeField] private TMP_Text label;
 
-    public void Initialize(Player player) {
+    [Inject]
+    public void Construct(Player player) {
         this.player = player;
     }
 

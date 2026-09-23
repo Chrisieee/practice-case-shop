@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Zenject;
 
 public class EquipmentManager : MonoBehaviour {
 
@@ -9,7 +10,8 @@ public class EquipmentManager : MonoBehaviour {
     private Dictionary<Cosmetic, stateEnum> cosmeticState = new();
     public enum stateEnum { normal, equiped }
 
-    public void Initialize(Player player) {
+    [Inject]
+    public void Construct(Player player) {
         this.player = player;
     }
 

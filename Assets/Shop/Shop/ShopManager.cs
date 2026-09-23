@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class ShopManager : MonoBehaviour {
     [SerializeField] private ShopUi ui;
@@ -6,8 +7,10 @@ public class ShopManager : MonoBehaviour {
     private Player player;
     private ShopCatalog catalog;
 
-    public void Initialize(Player player) {
+    [Inject]
+    public void Construct(Player player) {
         this.player = player;
+
         catalog = new ShopCatalog();
 
         catalog.Initialize(catalogJson, ui);
@@ -32,6 +35,6 @@ public class ShopManager : MonoBehaviour {
 
         player.UpdateBalance(-cosmetic.strategy.GetPrice());
         player.inventory.AddItem(cosmetic);
-        catalog.ChangeState("owned", cosmetic, ui);
+        catalog.ChangeState("owned", cosmetic);
     }
 }

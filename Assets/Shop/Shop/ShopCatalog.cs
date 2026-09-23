@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class ShopCatalog {
-    private List<Cosmetic> shopCosmetics = new List<Cosmetic>();
+    private List<Cosmetic> shopCosmetics = new();
     private TextAsset catalogJson;
     private ShopUi ui;
 
@@ -34,7 +34,7 @@ public class ShopCatalog {
         return cosmeticState[item];
     }
 
-    public void ChangeState(string state, Cosmetic item, ShopUi ui) {
+    public void ChangeState(string state, Cosmetic item) {
         cosmeticState[item] = state;
         ui.ChangeButtonText(state, item);
     }

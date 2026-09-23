@@ -2,17 +2,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using Zenject;
 
 public class InventoryUi : Ui {
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] private Transform inventoryContainer;
+    [SerializeField] private EquipmentManager equipmentManager;
+
     private Player player;
     private Inventory inventory;
 
-    [SerializeField] private EquipmentManager equipmentManager;
     private Dictionary<Cosmetic, Button> itemToButton = new();
 
-    public void Initialize(Player player, Inventory inventory) {
+    [Inject]
+    public void Construct(Player player, Inventory inventory) {
         this.inventory = inventory;
         this.player = player;
     }
