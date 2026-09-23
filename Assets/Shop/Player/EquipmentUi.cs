@@ -7,8 +7,8 @@ public class EquipmentUi : Ui {
     [SerializeField] private TMP_Text petLabel;
 
     public void UpdateEquipment(Player player) {
-        hatLabel.text = player.hat?.name ?? "none";
-        skinLabel.text = player.skin?.name ?? "none";
-        petLabel.text = player.pet?.name ?? "none";
+        hatLabel.text = player.Hat?.name ?? "none";
+        skinLabel.text = player.Skin?.name ?? "none";
+        petLabel.text = player.Pet?.name ?? "none";
     }
 }

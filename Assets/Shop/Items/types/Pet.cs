@@ -3,16 +3,11 @@ public class Pet : Cosmetic {
         cosmeticType = CosmeticType.pet;
     }
 
-    public override void Equip(Cosmetic cosmetic, Player player, EquipmentManager manager) {
-        if (player.pet != null) {
-            UnEquip(player, manager);
-        }
-
-        player.pet = (Pet)cosmetic;
+    public override void Equip(Player player) {
+        player.Pet = this;
     }
 
-    public override void UnEquip(Player player, EquipmentManager manager) {
-        manager.ChangeState("normal", player.pet);
-        player.pet = null;
+    public override void UnEquip(Player player) {
+        player.Pet = null;
     }
 }

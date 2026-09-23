@@ -5,17 +5,18 @@ public class EquipmentManager : MonoBehaviour {
     [SerializeField] private Player player;
     [SerializeField] private EquipmentUi ui;
 
-    private Dictionary<Cosmetic, string> cosmeticState = new Dictionary<Cosmetic, string>();
+    private Dictionary<Cosmetic, stateEnum> cosmeticState = new();
+    public enum stateEnum { normal, equiped }
 
     public void EquipCosmetic(Cosmetic cosmetic) {
-        if (CheckState(cosmetic) == "equiped") {
-            cosmetic.UnEquip(player, this);
+        if (CheckState(cosmetic) == stateEnum.equiped) {
+            cosmetic.UnEquip(player);
             ui.UpdateEquipment(player);
             return;
         }
 
-        cosmetic.Equip(cosmetic, player, this);
-        ChangeState("equiped", cosmetic);
+        cosmetic.Equip(player);
+        ChangeState(stateEnum.equiped, cosmetic);
 
         ui.UpdateEquipment(player);
     }
@@ -26,11 +27,11 @@ public class EquipmentManager : MonoBehaviour {
         }
     }
 
-    public string CheckState(Cosmetic item) {
-        return cosmeticState[item] ?? null;
+    public stateEnum CheckState(Cosmetic item) {
+        return cosmeticState[item];
     }
 
-    public void ChangeState(string state, Cosmetic item) {
+    public void ChangeState(stateEnum state, Cosmetic item) {
         cosmeticState[item] = state;
         player.inventory.ui.ChangeButtonText(state, item);
     }

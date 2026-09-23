@@ -1153,6 +1153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   inventory: {fileID: 636654861}
+  label: {fileID: 1102590149}
 --- !u!4 &919186660
 Transform:
   m_ObjectHideFlags: 0
@@ -1451,7 +1452,6 @@ GameObject:
   - component: {fileID: 1102590148}
   - component: {fileID: 1102590150}
   - component: {fileID: 1102590149}
-  - component: {fileID: 1102590151}
   m_Layer: 5
   m_Name: BalanceLabel
   m_TagString: Untagged
@@ -1578,20 +1578,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102590147}
   m_CullTransparentMesh: 1
---- !u!114 &1102590151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102590147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe818c140d721fb449a28cdc49d85918, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GemUi
-  player: {fileID: 919186659}
-  label: {fileID: 1102590149}
 --- !u!1 &1215101256
 GameObject:
   m_ObjectHideFlags: 0

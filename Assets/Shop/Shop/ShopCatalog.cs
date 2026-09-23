@@ -6,7 +6,7 @@ public class ShopCatalog : MonoBehaviour {
     [SerializeField] private TextAsset catalogJson;
     [SerializeField] private ShopUi ui;
 
-    private Dictionary<Cosmetic, string> cosmeticState = new Dictionary<Cosmetic, string>();
+    private Dictionary<Cosmetic, string> cosmeticState = new();
 
     void Awake() {
         GetCatalogItems();

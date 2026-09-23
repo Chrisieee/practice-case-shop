@@ -6,7 +6,7 @@ public class ShopManager : MonoBehaviour {
     [SerializeField] private ShopUi ui;
 
     public bool CanAfford(int amount) {
-        return amount <= player.gemBalance;
+        return amount <= player.GemBalance;
     }
 
     public void PurchaseItem(Cosmetic cosmetic) {

@@ -3,16 +3,11 @@ public class Skin : Cosmetic {
         cosmeticType = CosmeticType.skin;
     }
 
-    public override void Equip(Cosmetic cosmetic, Player player, EquipmentManager manager) {
-        if (player.skin != null) {
-            UnEquip(player, manager);
-        }
-
-        player.skin = (Skin)cosmetic;
+    public override void Equip(Player player) {
+        player.Skin = this;
     }
 
-    public override void UnEquip(Player player, EquipmentManager manager) {
-        manager.ChangeState("normal", player.skin);
-        player.skin = null;
+    public override void UnEquip(Player player) {
+        player.Skin = null;
     }
 }

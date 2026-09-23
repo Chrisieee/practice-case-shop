@@ -19,11 +19,11 @@ public class Cosmetic {
         manager.PurchaseItem(this);
     }
 
-    public virtual void Equip(Cosmetic cosmetic, Player player, EquipmentManager manager) {
+    public virtual void Equip(Player player) {
 
     }
 
-    public virtual void UnEquip(Player player, EquipmentManager manager) {
+    public virtual void UnEquip(Player player) {
 
     }
 }

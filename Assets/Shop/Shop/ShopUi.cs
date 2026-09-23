@@ -8,7 +8,7 @@ public class ShopUi : MonoBehaviour {
     [SerializeField] private Transform shopContainer;
     [SerializeField] private ShopManager shopManager;
     [SerializeField] private TMP_Text error;
-    private Dictionary<Cosmetic, Button> itemToButton = new Dictionary<Cosmetic, Button>();
+    private Dictionary<Cosmetic, Button> itemToButton = new();
 
     void Start() {
         HideError();

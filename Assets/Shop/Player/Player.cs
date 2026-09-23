@@ -1,19 +1,48 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour {
-    public int gemBalance { get; private set; } = 100;
     [SerializeField] public Inventory inventory;
-    [SerializeField] private TMP_Text label;
 
-    public Hat hat { get; set; }
-    public Skin skin { get; set; }
-    public Pet pet { get; set; }
+    public UnityEvent<Cosmetic, Cosmetic> OnCosmeticChanged { get; private set; } = new();
+    public UnityEvent<int> OnBalanceChanged { get; private set; } = new();
 
-    void Start() {
-        label.text = gemBalance + " gems";
+    private int gemBalance = 100;
+    public int GemBalance {
+        get => gemBalance;
+        set {
+            gemBalance = value;
+            OnBalanceChanged.Invoke(value);
+        }
     }
 
+    private Hat hat;
+    public Hat Hat {
+        get => hat;
+        set {
+            Cosmetic oldHat = hat;
+            hat = value;
+            OnCosmeticChanged.Invoke(oldHat, value);
+        }
+    }
+    private Skin skin;
+    public Skin Skin {
+        get => skin;
+        set {
+            Cosmetic oldSkin = skin;
+            skin = value;
+            OnCosmeticChanged.Invoke(oldSkin, value);
+        }
+    }
+    private Pet pet;
+    public Pet Pet {
+        get => pet;
+        set {
+            Cosmetic oldPet = pet;
+            pet = value;
+            OnCosmeticChanged.Invoke(oldPet, value);
+        }
+    }
     void Update() {
         if (Input.GetKeyDown(KeyCode.Equals)) {
             UpdateBalance(50);
@@ -21,11 +50,10 @@ public class Player : MonoBehaviour {
     }
 
     public bool CheckBalance(int amount) {
-        return amount <= gemBalance;
+        return amount <= GemBalance;
     }
 
     public void UpdateBalance(int amount) {
-        gemBalance += amount;
-        label.text = gemBalance + " gems";
+        GemBalance += amount;
     }
 }

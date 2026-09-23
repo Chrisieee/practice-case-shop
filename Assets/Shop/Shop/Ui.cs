@@ -4,7 +4,7 @@ public class Ui : MonoBehaviour {
     private CanvasGroup canvas;
     private bool isOpened = true;
 
-    void Start() {
+    protected virtual void Start() {
         canvas = GetComponent<CanvasGroup>();
         Open();
     }
