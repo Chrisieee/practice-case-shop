@@ -2,11 +2,16 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class EquipmentManager : MonoBehaviour {
-    [SerializeField] private Player player;
+
     [SerializeField] private EquipmentUi ui;
+    private Player player;
 
     private Dictionary<Cosmetic, stateEnum> cosmeticState = new();
     public enum stateEnum { normal, equiped }
+
+    public void Initialize(Player player) {
+        this.player = player;
+    }
 
     public void EquipCosmetic(Cosmetic cosmetic) {
         if (CheckState(cosmetic) == stateEnum.equiped) {
@@ -33,6 +38,5 @@ public class EquipmentManager : MonoBehaviour {
 
     public void ChangeState(stateEnum state, Cosmetic item) {
         cosmeticState[item] = state;
-        player.inventory.ui.ChangeButtonText(state, item);
     }
 }

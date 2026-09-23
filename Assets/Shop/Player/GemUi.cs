@@ -2,16 +2,20 @@ using UnityEngine;
 using TMPro;
 
 public class GemUi : MonoBehaviour {
-    [SerializeField] Player player;
-    [SerializeField] TMP_Text label;
+    private Player player;
+    [SerializeField] private TMP_Text label;
 
-    void Start() {
-        ChangeLabel(player.GemBalance);
-
-        player.OnBalanceChanged.AddListener(ChangeLabel);
+    public void Initialize(Player player) {
+        this.player = player;
     }
 
-    private void ChangeLabel(int gems) {
+    void Start() {
+        UpdateLabel(player.GemBalance);
+
+        player.OnBalanceChanged.AddListener(UpdateLabel);
+    }
+
+    private void UpdateLabel(int gems) {
         label.text = gems + " gems";
     }
 }

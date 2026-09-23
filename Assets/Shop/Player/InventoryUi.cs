@@ -6,15 +6,28 @@ using System.Collections.Generic;
 public class InventoryUi : Ui {
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] private Transform inventoryContainer;
-    [SerializeField] private Player player;
+    private Player player;
+    private Inventory inventory;
 
     [SerializeField] private EquipmentManager equipmentManager;
     private Dictionary<Cosmetic, Button> itemToButton = new();
+
+    public void Initialize(Player player, Inventory inventory) {
+        this.inventory = inventory;
+        this.player = player;
+    }
 
     protected override void Start() {
         base.Start();
 
         player.OnCosmeticChanged.AddListener(OnCosmeticChange);
+        inventory.OnInventoryChanged.AddListener(FillInventoryUi);
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.I)) {
+            Open();
+        }
     }
 
     public void FillInventoryUi(List<Cosmetic> inventoryItems) {

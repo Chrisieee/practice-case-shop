@@ -1,9 +1,17 @@
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour {
-    [SerializeField] private Player player;
-    [SerializeField] private ShopCatalog catalog;
     [SerializeField] private ShopUi ui;
+    [SerializeField] private TextAsset catalogJson;
+    private Player player;
+    private ShopCatalog catalog;
+
+    public void Initialize(Player player) {
+        this.player = player;
+        catalog = new ShopCatalog();
+
+        catalog.Initialize(catalogJson, ui);
+    }
 
     public bool CanAfford(int amount) {
         return amount <= player.GemBalance;

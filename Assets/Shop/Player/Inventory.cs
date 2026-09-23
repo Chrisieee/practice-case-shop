@@ -1,19 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
-public class Inventory : MonoBehaviour {
-    private List<Cosmetic> inventoryCosmetics = new List<Cosmetic>();
-    public InventoryUi ui;
+public class Inventory {
+    private List<Cosmetic> inventoryCosmetics = new();
+    public UnityEvent<List<Cosmetic>> OnInventoryChanged { get; private set; } = new();
 
     public void AddItem(Cosmetic cosmetic) {
         inventoryCosmetics.Add(cosmetic);
-        print("item added");
-        ui.FillInventoryUi(inventoryCosmetics);
-    }
-
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.I)) {
-            ui.Open();
-        }
+        OnInventoryChanged.Invoke(inventoryCosmetics);
     }
 }

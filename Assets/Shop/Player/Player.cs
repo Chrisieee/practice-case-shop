@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : MonoBehaviour {
-    [SerializeField] public Inventory inventory;
+public class Player {
+    public Inventory inventory;
 
     public UnityEvent<Cosmetic, Cosmetic> OnCosmeticChanged { get; private set; } = new();
     public UnityEvent<int> OnBalanceChanged { get; private set; } = new();
@@ -43,6 +43,11 @@ public class Player : MonoBehaviour {
             OnCosmeticChanged.Invoke(oldPet, value);
         }
     }
+
+    public void Initialize(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
     void Update() {
         if (Input.GetKeyDown(KeyCode.Equals)) {
             UpdateBalance(50);

@@ -1,14 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ShopCatalog : MonoBehaviour {
+public class ShopCatalog {
     private List<Cosmetic> shopCosmetics = new List<Cosmetic>();
-    [SerializeField] private TextAsset catalogJson;
-    [SerializeField] private ShopUi ui;
+    private TextAsset catalogJson;
+    private ShopUi ui;
 
     private Dictionary<Cosmetic, string> cosmeticState = new();
 
-    void Awake() {
+    public void Initialize(TextAsset catalogJson, ShopUi ui) {
+        this.catalogJson = catalogJson;
+        this.ui = ui;
+
         GetCatalogItems();
     }
 
