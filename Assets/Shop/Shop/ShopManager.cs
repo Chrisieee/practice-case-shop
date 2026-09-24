@@ -1,18 +1,15 @@
-using UnityEngine;
 using Zenject;
 
-public class ShopManager : MonoBehaviour {
-    [SerializeField] private ShopUi ui;
-    [SerializeField] private TextAsset catalogJson;
+public class ShopManager {
+    private ShopUi ui;
     private Player player;
     private ShopCatalog catalog;
 
     [Inject]
-    public void Construct(Player player, ShopCatalog catalog) {
+    public void Construct(Player player, ShopCatalog catalog, ShopUi shopUi) {
         this.player = player;
         this.catalog = catalog;
-
-        catalog.Initialize(catalogJson, ui);
+        ui = shopUi;
     }
 
     public bool CanAfford(int amount) {

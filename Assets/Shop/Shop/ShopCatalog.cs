@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Zenject;
 
 public class ShopCatalog {
     private List<Cosmetic> shopCosmetics = new();
@@ -8,9 +9,10 @@ public class ShopCatalog {
 
     private Dictionary<Cosmetic, string> cosmeticState = new();
 
-    public void Initialize(TextAsset catalogJson, ShopUi ui) {
+    [Inject]
+    public void Construct(TextAsset catalogJson, ShopUi shopUi) {
         this.catalogJson = catalogJson;
-        this.ui = ui;
+        ui = shopUi;
 
         GetCatalogItems();
     }

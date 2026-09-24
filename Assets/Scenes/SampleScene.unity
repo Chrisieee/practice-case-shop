@@ -487,7 +487,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopUi
   buttonPrefab: {fileID: 6692868460384818924, guid: 42fbf171057e6664cb62fc69dcad7d7b, type: 3}
   shopContainer: {fileID: 1454589284}
-  shopManager: {fileID: 1975737948}
   error: {fileID: 2035486994}
 --- !u!1 &330585543
 GameObject:
@@ -1218,7 +1217,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryUi
   itemPrefab: {fileID: 892102897504477895, guid: e34125c4771eecb4fb10f95d1b98b392, type: 3}
   inventoryContainer: {fileID: 1215101257}
-  equipmentManager: {fileID: 1094375043}
 --- !u!225 &1040231130
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1257,51 +1255,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1 &1094375042
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1094375044}
-  - component: {fileID: 1094375043}
-  m_Layer: 0
-  m_Name: EquipmentManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1094375043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094375042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65976346c790bfe4d88ee11ec9656f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EquipmentManager
-  ui: {fileID: 1019319244}
---- !u!4 &1094375044
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094375042}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 637.35315, y: 247.02617, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1102590147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,6 +1436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0657e10dc64e1ac46a375b17da6532ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameInstaller
+  catalogJson: {fileID: 4900000, guid: e90965f0669692e418013c1504d4c1ef, type: 3}
+  shopUi: {fileID: 245531763}
+  equipmentUi: {fileID: 1019319244}
 --- !u!114 &1149457681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2587,52 +2543,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887166778}
   m_CullTransparentMesh: 1
---- !u!1 &1975737947
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1975737949}
-  - component: {fileID: 1975737948}
-  m_Layer: 0
-  m_Name: ShopManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1975737948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975737947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb7b85f6840872e4aa3740f545e608cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopManager
-  ui: {fileID: 245531763}
-  catalogJson: {fileID: 4900000, guid: e90965f0669692e418013c1504d4c1ef, type: 3}
---- !u!4 &1975737949
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975737947}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 637.35315, y: 247.02617, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2035486992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2916,6 +2826,4 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 691896235}
   - {fileID: 730298560}
-  - {fileID: 1094375044}
-  - {fileID: 1975737949}
   - {fileID: 1149457682}

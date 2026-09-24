@@ -2,15 +2,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using Zenject;
 
 public class ShopUi : MonoBehaviour {
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private Transform shopContainer;
-    [SerializeField] private ShopManager shopManager;
+    private ShopManager shopManager;
     [SerializeField] private TMP_Text error;
     private Dictionary<Cosmetic, Button> itemToButton = new();
 
-    void Start() {
+    [Inject]
+    public void Construct(ShopManager shopManager) {
+        this.shopManager = shopManager;
+
         HideError();
     }
 

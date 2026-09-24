@@ -2,17 +2,18 @@ using UnityEngine;
 using System.Collections.Generic;
 using Zenject;
 
-public class EquipmentManager : MonoBehaviour {
+public class EquipmentManager {
 
-    [SerializeField] private EquipmentUi ui;
+    private EquipmentUi ui;
     private Player player;
 
     private Dictionary<Cosmetic, stateEnum> cosmeticState = new();
     public enum stateEnum { normal, equiped }
 
     [Inject]
-    public void Construct(Player player) {
+    public void Construct(Player player, EquipmentUi equipmentUi) {
         this.player = player;
+        ui = equipmentUi;
     }
 
     public void EquipCosmetic(Cosmetic cosmetic) {
@@ -26,12 +27,6 @@ public class EquipmentManager : MonoBehaviour {
         ChangeState(stateEnum.equiped, cosmetic);
 
         ui.UpdateEquipment(player);
-    }
-
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Tab)) {
-            ui.Open();
-        }
     }
 
     public stateEnum CheckState(Cosmetic item) {

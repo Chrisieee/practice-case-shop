@@ -11,4 +11,10 @@ public class EquipmentUi : Ui {
         skinLabel.text = player.Skin?.name ?? "none";
         petLabel.text = player.Pet?.name ?? "none";
     }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Tab)) {
+            Open();
+        }
+    }
 }

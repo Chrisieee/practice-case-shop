@@ -7,7 +7,7 @@ using Zenject;
 public class InventoryUi : Ui {
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] private Transform inventoryContainer;
-    [SerializeField] private EquipmentManager equipmentManager;
+    private EquipmentManager equipmentManager;
 
     private Player player;
     private Inventory inventory;
@@ -15,9 +15,10 @@ public class InventoryUi : Ui {
     private Dictionary<Cosmetic, Button> itemToButton = new();
 
     [Inject]
-    public void Construct(Player player, Inventory inventory) {
+    public void Construct(Player player, Inventory inventory, EquipmentManager equipmentManager) {
         this.inventory = inventory;
         this.player = player;
+        this.equipmentManager = equipmentManager;
     }
 
     protected override void Start() {
