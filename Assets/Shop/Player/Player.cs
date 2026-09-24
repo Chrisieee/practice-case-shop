@@ -25,6 +25,7 @@ public class Player {
             OnCosmeticChanged.Invoke(oldHat, value);
         }
     }
+
     private Skin skin;
     public Skin Skin {
         get => skin;
@@ -34,6 +35,7 @@ public class Player {
             OnCosmeticChanged.Invoke(oldSkin, value);
         }
     }
+
     private Pet pet;
     public Pet Pet {
         get => pet;

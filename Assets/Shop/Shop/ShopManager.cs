@@ -8,10 +8,9 @@ public class ShopManager : MonoBehaviour {
     private ShopCatalog catalog;
 
     [Inject]
-    public void Construct(Player player) {
+    public void Construct(Player player, ShopCatalog catalog) {
         this.player = player;
-
-        catalog = new ShopCatalog();
+        this.catalog = catalog;
 
         catalog.Initialize(catalogJson, ui);
     }
